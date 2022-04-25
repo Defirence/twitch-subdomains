@@ -1,6 +1,7 @@
 name: update-subdomains
 on:
-  workflow_dispatch:
+  workflow_dispatch: update-subdomains
+  token: {{ secrets.updateDomainsToken }}
 
 jobs:
   build:
