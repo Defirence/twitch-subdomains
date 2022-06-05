@@ -15,4 +15,7 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo "Updating subdomains..."
-          echo test, and deploy your project.
+          apt-get update -y && apt-get upgrade -y && apt-get install python3 -y
+          sleep 1
+          echo "Done updating packages"
+          cd sublist3r && python3 ./sublist3r.py -v -b -d twitch.tv
