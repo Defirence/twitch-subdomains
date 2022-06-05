@@ -18,4 +18,4 @@ jobs:
           sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get install python3 -y
           sleep 1
           echo "Done updating packages"
-          cd sublist3r && python3 ./sublist3r.py -v -b -d twitch.tv
+          cd Sublist3r && pip install -r requirements.txt && python3 ./sublist3r.py -v -b -d twitch.tv
