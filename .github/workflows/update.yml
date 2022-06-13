@@ -12,10 +12,13 @@ jobs:
       - uses: actions/checkout@v3
       - name: Clone sublister
         run: git clone https://github.com/aboul3la/Sublist3r.git
-      - name: Run a multi-line script
+      - name: Scan and update subdomains, push to GitHub repo
         run: |
           echo "Updating subdomains..."
           sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get install python3 -y
           sleep 1
           echo "Done updating packages"
-          cd Sublist3r && pip install -r requirements.txt && python3 ./sublist3r.py -v -b -d twitch.tv
+          cd Sublist3r && pip install -r requirements.txt && python3 ./sublist3r.py -v -d twitch.tv > /tmp/subdomains.txt
+          sleep 1
+          git add /tmp/subdomains.txt && git commit -m "Update domains" && git push
+          exit 0
